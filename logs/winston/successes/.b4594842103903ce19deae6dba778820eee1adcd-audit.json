@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/Users/jannatborna/Documents/WEB-DEVELOPER/Next-Level-WD/Miss-6-SQL/assignment-8/logs/winston/successes/.b4594842103903ce19deae6dba778820eee1adcd-audit.json",
+    "files": [
+        {
+            "date": 1693502052255,
+            "name": "/Users/jannatborna/Documents/WEB-DEVELOPER/Next-Level-WD/Miss-6-SQL/assignment-8/logs/winston/successes/phu-2023-31-08-23-success.log",
+            "hash": "de9991c6e22d56249842c3411d2e98771e1edf51f90bc1f17548bc85805938e1"
+        }
+    ],
+    "hashType": "sha256"
+}

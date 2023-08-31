@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// schema.prisma
+// user
 model User {
   id         String   @id @default(uuid()) 
   name       String
