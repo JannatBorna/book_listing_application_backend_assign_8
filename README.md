@@ -7,17 +7,17 @@
 ### User
 
     * api/v1/auth/signup (POST) ✅
-    * api/v1/users (GET)
+    * api/v1/users (GET)✅
     * api/v1/users/6177a5b87d32123f08d2f5d4 (Single GET) Include an id that is saved in your database ✅
-    * api/v1/users/6177a5b87d32123f08d2f5d4 (PATCH)
-    * api/v1/users/6177a5b87d32123f08d2f5d4 (DELETE) Include an id that is saved in your database
+    * api/v1/users/6177a5b87d32123f08d2f5d4 (PATCH)✅
+    * api/v1/users/6177a5b87d32123f08d2f5d4 (DELETE) Include an id that is saved in your database✅
     * api/v1/profile (GET)
 
 ### Category
 
-    * api/v1/categories/create-category (POST)
-    * api/v1/categories (GET)
-    * api/v1/categories/6177a5b87d32123f08d2f5d4 (Single GET) Include an id that is saved in your database
+    * api/v1/categories/create-category (POST) ✅
+    * api/v1/categories (GET)✅
+    * api/v1/categories/6177a5b87d32123f08d2f5d4 (Single GET) Include an id that is saved in your database✅
     * api/v1/categories/6177a5b87d32123f08d2f5d4 (PATCH)
     * api/v1/categories/6177a5b87d32123f08d2f5d4 (DELETE) Include an id that is saved in your database
 
