@@ -1,28 +1,26 @@
 # l2-b1-assignment-8
 
-# Build a Book Catallog Backend Assignment
+## Build a Book Catallog Backend Assignment
 
 <!-- ### Create Private Repo with this [link](https://classroom.github.com/a/le5T8iGk)
 [https://classroom.github.com/a/le5T8iGk](https://classroom.github.com/a/le5T8iGk) -->
 
-<hr>
-
 ### Assignment No: 08
 
-### Assignment Description:
+### Assignment Description
 
 You have been assigned the task of building the backend for a Book Listing Application. The main focus of this assignment is to implement CRUD operations, pagination and filtering using Prisma, Postgres and Express.
 
-### Technology Stack:
+### Technology Stack
 
 - Use TypeScript as the Programming Language.
 - Use Express.js as the web framework.
 - Use Prisma as the Object Realtion Model (ORM)
 - Use postgreSQL as the database
 
-### Model:
+### Model
 
-### User Model:
+### User Model ✅
 
 Create a `User` model with the following fields:
 
@@ -35,14 +33,14 @@ Create a `User` model with the following fields:
 - address: A string for the user's address.
 - profileImg: A string for the user's profile image.
 
-### Category Model:
+### Category Model
 
 Create a `Category` model with the following fields:
 
 - id: A UUID generated using the @default(uuid()) attribute.
 - title: A string representing the category title.
 
-### Book Model:
+### Book Model
 
 Create a `Book` model with the following fields:
 
@@ -54,7 +52,7 @@ Create a `Book` model with the following fields:
 - publicationDate: A DateTime field representing the book's publication date.
 - categoryId: A UUID representing the category to which the book belongs.
 
-### Review And Rating:
+### Review And Rating
 
 Create a `ReviewAndRating` model with the following fields:
 
@@ -75,18 +73,23 @@ Create an `Order` model with the following fields:
 - createdAt: A DateTime field representing the order creation timestamp.
 
 #### Storing Ordered Books: Hints and Guidelines
+
 When it comes to storing ordered books in your application, you have a range of choices. Here, we'll delve into two prevalent strategies: utilizing a JSON field to hold the data, or alternatively, crafting a distinct model for ordered books. Feel free to select any approach that best suits for you.
 
-##### Approach 1: Using JSON Type
-1. Define the JSON Field:
+#### Approach 1: Using JSON Type
+
+##### 1. Define the JSON Field
+
 - In the `Order` model, define the `orderedBooks` field as a JSON data type.
 - Use Prisma's Json type to represent JSON data.
 
-2. Storing Array of Objects:
+##### 2. Storing Array of Objects
+
 - In the `orderedBooks` field, store an array of objects, each containing `bookId` and `quantity`.
 - JSON arrays are enclosed in square brackets [], and objects are enclosed in curly braces {}.
 
-3. Example JSON Structure:
+##### 3. Example JSON Structure
+
 ```json
 [
   { "bookId": "uuid1", "quantity": 2 },
@@ -96,17 +99,19 @@ When it comes to storing ordered books in your application, you have a range of 
 
 #### Approach 2: Using Separate Model
 
-1. Define OrderedBook Model:
+##### 1. Define OrderedBook Model
+
 - Create an `OrderedBook` model with fields: `id`, `orderId`, `bookId`, and `quantity`.
 - Use the @default(uuid()) attribute to generate UUIDs for id.
 
-2. Create Relationship:
+##### 2. Create Relationship
+
 - In the `Order` model, establish a one-to-many relationship to `OrderedBook`.
 - This enables each order to have multiple associated ordered book entries.
 
-# Main Part:
+## Main Part
 
-## API End points and Sample Data:
+## API End points and Sample Data
 
 ## Implement Create, Read, Update, and Delete Operations for Users Listing
 
@@ -205,7 +210,8 @@ Route: /api/v1/users/:id (PATCH)
 
 Request Param: :id
 
-Request Body: 
+Request Body:
+
 ```json
 {
   "name": "John Doe1",
@@ -256,7 +262,7 @@ Route: /api/v1/categories/create-category (POST) → Only Allowed For Admin
 
 Request body:
 
-### Sample Data:
+### Sample Data
 
 ```json
 {
@@ -348,7 +354,8 @@ Route: /api/v1/categories/:id (PATCH)
 
 Request Param: :id
 
-Request Body: 
+Request Body:
+
 ```json
 {
   "title": "Fiction"
@@ -395,7 +402,7 @@ Response Sample Data:
 
 ```
 
-## Implement Create, Read, Update, and Delete Operations for Book listings.
+## Implement Create, Read, Update, and Delete Operations for Book listings
 
 ### Create a New Book
 
@@ -569,7 +576,8 @@ Route: /api/v1/books/:id (PATCH)
 
 Request Param: :id
 
-Request Body: 
+Request Body:
+
 ```json
 {
   "title": "The Catcher in the Rye Part-1",
@@ -628,11 +636,11 @@ Response Sample Data:
 }
 ```
 
-### Implement Create, Read Operations for Order Listings.
+### Implement Create, Read Operations for Order Listings
 
 ### Create Order → Only Allowed For Customer
 
-Route: /api/v1/orders/create-order (POST) 
+Route: /api/v1/orders/create-order (POST)
 
 Request body:
 
@@ -703,7 +711,7 @@ Response Sample Pattern:
 
 ### Get all Order for specific Customer → Only Specific For Customer
 
-Route: /api/v1/orders (GET) 
+Route: /api/v1/orders (GET)
 
 Request Headers: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiY3VzdG9tZXIiLCJ1c2VySWQiOiJvNTc3LXg4ODgtZGQ4Ni1kZDJmIiwiaWF0IjoxNTE2MjM5MDIyfQ.MejYWi-cw0zf5zFiJ5R09-PrCWOj8auEqAz2XY9im1Q"
 
@@ -734,11 +742,11 @@ Response Sample Pattern:
 
 ```
 
-# Bonus Part:
+## Bonus Part
 
 ### Get single order by Id → Only for specific customer and admins
 
-Route: /api/v1/orders/:orderId (Get) 
+Route: /api/v1/orders/:orderId (Get)
 
 Request Headers: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiY3VzdG9tZXIiLCJ1c2VySWQiOiJvNTc3LXg4ODgtZGQ4Ni1kZDJmIiwiaWF0IjoxNTE2MjM5MDIyfQ.MejYWi-cw0zf5zFiJ5R09-PrCWOj8auEqAz2XY9im1Q"
 
@@ -759,6 +767,7 @@ Please follow these steps to access the specific order:
 - If the user's role is a customer, verify that the order's userId matches the userId of the customer who placed the order. This step ensures that only customers who ordered individually will be able to see the specific order.
 
 Sample Response Data:
+
 ```json
 {
   "success": true,
@@ -786,7 +795,7 @@ Sample Response Data:
 
 ### Get User Profile Data → Only for specific user (customer and admin)
 
-Route: /api/v1/profile (Get) 
+Route: /api/v1/profile (Get)
 
 Request Headers: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiY3VzdG9tZXIiLCJ1c2VySWQiOiJvNTc3LXg4ODgtZGQ4Ni1kZDJmIiwiaWF0IjoxNTE2MjM5MDIyfQ.MejYWi-cw0zf5zFiJ5R09-PrCWOj8auEqAz2XY9im1Q"
 
@@ -823,7 +832,7 @@ Please follow these steps to access the specific profile:
 
 - Decode the token to extract the userId. If the userId exists, compare it with the userId in the User Model to find a match.
 
-### Deadline:
+### Deadline
 
 - 60 Marks 3 Days (Till 3rd September Sunday 11.59 PM)
 - 50 Marks 1 Day (Till 4th September Monday 11.59 PM)
@@ -839,9 +848,9 @@ Please follow these steps to access the specific profile:
    - `** You must follow provided API Endpoints  for creating routes. Otherwise, you will lose your marks **`
      You can follow the pattern given below to enlist your application routes in the readme.md file:
 
-### Live Link: https://example.com
+### Live Link: `https://example.com`
 
-### Application Routes:
+### Application Routes
 
 #### User
 
@@ -872,6 +881,5 @@ Please follow these steps to access the specific profile:
 ### Orders
 
 - api/v1/orders/create-order (POST)
-- api/v1/orders (GET) 
+- api/v1/orders (GET)
 - api/v1/orders/:orderId (GET)
-
