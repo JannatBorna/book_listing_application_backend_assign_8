@@ -14,6 +14,19 @@ const insertIntoDB = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+// get all data
+const getAllFromDB = catchAsync(async (req: Request, res: Response) => {
+  const result = await BookService.getAllFromDB();
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Books data fetch sucessfully',
+    meta: result.meta,
+    data: result.data,
+  });
+});
+
 export const BookController = {
   insertIntoDB,
+  getAllFromDB,
 };

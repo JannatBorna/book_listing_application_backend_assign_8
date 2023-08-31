@@ -4,7 +4,8 @@ import auth from '../../middlewares/auth';
 import { BookController } from './book.controller';
 
 const router = express.Router();
-
+//get all data
+router.get('/', BookController.getAllFromDB);
 //create
 router.post(
   '/create-book',

@@ -23,7 +23,7 @@
 
 ### Books
 
-    * api/v1/books/create-book (POST)
+    * api/v1/books/create-book (POST)✅
     * api/v1/books (GET)
     * api/v1/books/:categoryId (GET)
     * api/v1/books/:id (GET)
