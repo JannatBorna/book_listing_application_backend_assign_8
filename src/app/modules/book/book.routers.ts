@@ -31,4 +31,12 @@ router.delete(
   BookController.deleteByIdFromDB
 );
 
+// Assign-Faculties
+router.post(
+  '/:id/category',
+  // validateRequest(CourseValidation.assignOrRemoveFaculties),
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+  BookController.assignCategory
+);
+
 export const bookRouters = router;

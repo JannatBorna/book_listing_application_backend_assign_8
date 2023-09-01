@@ -1,4 +1,4 @@
-import { Book } from '@prisma/client';
+import { Book, BookCategory } from '@prisma/client';
 import { IGenericResponse } from '../../../interfaces/common';
 import prisma from '../../../shared/prisma';
 
@@ -68,10 +68,33 @@ const deleteByIdFromDB = async (id: string): Promise<Book> => {
   return result;
 };
 
+// Assign/create Category
+const assignCategory = async (
+  id: string,
+  payload: string[]
+): Promise<BookCategory[]> => {
+  await prisma.bookCategory.createMany({
+    data: payload.map(bookId => ({
+      categoryId: id,
+      bookId: bookId,
+    })),
+  });
+  const assignCategoriesData = await prisma.bookCategory.findMany({
+    where: {
+      categoryId: id,
+    },
+    include: {
+      book: true,
+    },
+  });
+  return assignCategoriesData;
+};
+
 export const BookService = {
   insertIntoDB,
   getAllFromDB,
   getByIdFromDB,
   updateOneInDB,
   deleteByIdFromDB,
+  assignCategory,
 };
