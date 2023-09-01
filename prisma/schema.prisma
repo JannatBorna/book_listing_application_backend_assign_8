@@ -12,14 +12,16 @@ datasource db {
 
 // user
 model User {
-  id         String   @id @default(uuid()) 
-  name       String
-  email      String   @unique
-  password   String
-  role            Role              @default(customer)
-  contactNo  String
-  address    String
-  profileImg String
+  id             String   @id @default(uuid()) 
+  name           String
+  email          String   @unique
+  password       String
+  role           Role     @default(customer)  
+  contactNo      String
+  address        String
+  profileImg     String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
   reviewAndRatings  ReviewAndRating[]
   orders  Order[]
   
@@ -84,6 +86,15 @@ model Order {
   @@map("orders")
 }
 
+model Users {
+  id             String   @id @default(uuid()) 
+  email          String   @unique
+  password       String
+
+
+  @@map("useress")
+}
+
 // schema.prisma
 
 // model OrderedBook {
@@ -100,10 +111,10 @@ model Order {
   // @@map("orderedBooks")
 // }
 
-enum Role {
-  admin
-  customer
-}
+ enum Role {
+   admin
+   customer
+ }
 
 
 enum OrderStatus {
