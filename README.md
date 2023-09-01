@@ -32,11 +32,11 @@
 
 ### Review
 
-    * api/v1/reviews/create-review (POST)
-    * api/v1/reviews (GET)
-    * api/v1/reviews/:id (GET)
-    * api/v1/reviews/:id (PATCH)
-    * api/v1/reviews/:id (DELETE)
+    * api/v1/reviews/create-review (POST)✅
+    * api/v1/reviews (GET)✅
+    * api/v1/reviews/:id (GET)✅
+    * api/v1/reviews/:id (PATCH)✅
+    * api/v1/reviews/:id (DELETE)✅
 
 ### Orders
 
