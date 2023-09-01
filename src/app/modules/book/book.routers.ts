@@ -17,4 +17,11 @@ router.post(
   BookController.insertIntoDB
 );
 
+//Update a Single Book
+router.patch(
+  '/:id',
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+  BookController.updateOneInDB
+);
+
 export const bookRouters = router;
