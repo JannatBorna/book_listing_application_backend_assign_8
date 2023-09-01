@@ -20,7 +20,7 @@ router.get(
 );
 
 //create
-router.post('/', UserController.insertIntoDB);
+// router.post('/', UserController.insertIntoDB);
 
 //update
 router.patch(

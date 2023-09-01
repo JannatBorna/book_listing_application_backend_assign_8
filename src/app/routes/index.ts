@@ -1,4 +1,5 @@
 import express from 'express';
+import { authRoutes } from '../modules/auth/auth.routers';
 import { bookRouters } from '../modules/book/book.routers';
 import { categoryRouters } from '../modules/category/category.routers';
 import { orderRouters } from '../modules/order/order.routers';
@@ -10,8 +11,8 @@ const router = express.Router();
 const moduleRoutes = [
   // ... routes
   {
-    path: '/auth/signup',
-    route: userRouters,
+    path: '/auth',
+    route: authRoutes,
   },
 
   {
