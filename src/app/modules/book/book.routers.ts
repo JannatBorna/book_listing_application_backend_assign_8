@@ -24,4 +24,11 @@ router.patch(
   BookController.updateOneInDB
 );
 
+//Delete a book
+router.delete(
+  '/:id',
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+  BookController.deleteByIdFromDB
+);
+
 export const bookRouters = router;
