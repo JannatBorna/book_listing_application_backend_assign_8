@@ -11,7 +11,7 @@
     * api/v1/users/6177a5b87d32123f08d2f5d4 (Single GET) Include an id that is saved in your database ✅
     * api/v1/users/6177a5b87d32123f08d2f5d4 (PATCH)✅
     * api/v1/users/6177a5b87d32123f08d2f5d4 (DELETE) Include an id that is saved in your database✅
-    * api/v1/profile (GET)
+    * api/v1/profile (GET) ❌
 
 ### Category
 
@@ -25,10 +25,18 @@
 
     * api/v1/books/create-book (POST)✅
     * api/v1/books (GET)✅
-    * api/v1/books/:categoryId (GET)
-    * api/v1/books/:id (GET)
-    * api/v1/books/:id (PATCH)
-    * api/v1/books/:id (DELETE)
+    * api/v1/books/:categoryId (GET) ❌
+    * api/v1/books/:id (GET)✅
+    * api/v1/books/:id (PATCH)✅
+    * api/v1/books/:id (DELETE)✅
+
+### Review
+
+    * api/v1/reviews/create-review (POST)
+    * api/v1/reviews (GET)
+    * api/v1/reviews/:id (GET)
+    * api/v1/reviews/:id (PATCH)
+    * api/v1/reviews/:id (DELETE)
 
 ### Orders
 
