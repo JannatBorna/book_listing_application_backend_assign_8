@@ -34,7 +34,7 @@ const getByIdFromDB = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'User single data sucessfully',
+    message: 'User single data fetch sucessfully!!',
     data: result,
   });
 });
