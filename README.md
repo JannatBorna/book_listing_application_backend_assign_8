@@ -25,7 +25,7 @@
 
     * api/v1/books/create-book (POST)✅
     * api/v1/books (GET)✅
-    * api/v1/books/:categoryId (GET) ❌
+    * /api/v1/books/:categoryId/category ❌
     * api/v1/books/:id (GET)✅
     * api/v1/books/:id (PATCH)✅
     * api/v1/books/:id (DELETE)✅

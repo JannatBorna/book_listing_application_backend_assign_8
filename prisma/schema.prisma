@@ -16,11 +16,12 @@ model User {
   name       String
   email      String   @unique
   password   String
-  role       String   
+  role            Role              @default(customer)
   contactNo  String
   address    String
   profileImg String
   reviewAndRatings  ReviewAndRating[]
+  orders  Order[]
   
   @@map("user")
 }
@@ -44,8 +45,9 @@ model Book {
   publicationDate DateTime 
 
   category Category @relation(fields: [categoryId], references: [id])
-  categoryId      String   
-
+  categoryId       String   
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
   reviewAndRatings ReviewAndRating[] 
   
 
@@ -62,6 +64,8 @@ model ReviewAndRating {
 
   book Book  @relation(fields: [bookId], references: [id])
   bookId          String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 
   @@map("review_and_ratings")
 }
@@ -69,16 +73,41 @@ model ReviewAndRating {
 // order
 model Order {
   id            String    @id  @default(uuid())
+
+  user User @relation(fields: [userId], references: [id])
   userId        String
-  orderedBooks  Json
-  status        OrderStatus    @default(PENDING)
-  createdAt     DateTime       @default(now())
+  orderedBooks Json
+  status        OrderStatus    @default(pending)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
 
   @@map("orders")
 }
 
+// schema.prisma
+
+// model OrderedBook {
+  // id       String @id @default(uuid())
+
+  // order    Order   @relation(fields: [orderId], references: [id])
+  // orderId  String
+
+  // book     Book  @relation(fields: [bookId], references: [id])
+  // bookId   String
+
+  // quantity Int
+
+  // @@map("orderedBooks")
+// }
+
+enum Role {
+  admin
+  customer
+}
+
+
 enum OrderStatus {
-  PENDING
-  SHIPPED
-  DELIVERED
+ pending
+ shipped
+ delivered
 }
