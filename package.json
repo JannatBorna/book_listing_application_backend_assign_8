@@ -2,7 +2,10 @@
   "name": "university-management-core-service",
   "version": "1.0.0",
   "description": "",
-  "main": "src/server.ts",
+  "engines": {
+    "node": ">=16"
+  },
+
   "scripts": {
     "start": "ts-node-dev --respawn --transpile-only src/server.ts",
     "lint:check": "eslint --ignore-path .eslintignore --ext .js,.ts .",
