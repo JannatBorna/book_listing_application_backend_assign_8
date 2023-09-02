@@ -1,72 +1,68 @@
+import { User } from '@prisma/client';
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
+// import { sendRes } from '../../../utilities/sendRes';
+// import { tryCatch } from '../../../utilities/tryCatch';
 import catchAsync from '../../../shared/catchAsync';
 import sendResponse from '../../../shared/sendResponse';
 import { UserService } from './user.service';
+// import {
+// deleteUserService,
+// getUserService,
+// getUsersService,
+// updateUserService,
+// } from './user.service';
 
-//create
-const insertIntoDB = catchAsync(async (req: Request, res: Response) => {
-  const result = await UserService.insertIntoDB(req.body);
-  sendResponse(res, {
+const getAllUsers = catchAsync(async (req: Request, res: Response) => {
+  const result = await UserService.getUsersService();
+
+  sendResponse<Partial<Omit<User, 'password'>[]>>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'User created successfully!',
+    message: 'Users retrieved successfully',
     data: result,
   });
 });
 
-// get all data
-const getAllFromDB = catchAsync(async (req: Request, res: Response) => {
-  const result = await UserService.getAllFromDB();
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'User data fetch sucessfully',
-    meta: result.meta,
-    data: result.data,
-  });
-});
-
-// Get a Single User
-const getByIdFromDB = catchAsync(async (req: Request, res: Response) => {
+const getUser = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const result = await UserService.getByIdFromDB(id);
-  sendResponse(res, {
+  const result = await UserService.getUserService(id);
+
+  sendResponse<Partial<User>>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'User single data fetch sucessfully!!',
+    message: 'User retrieved successfully',
     data: result,
   });
 });
 
-//update
-const updateOneInDB = catchAsync(async (req: Request, res: Response) => {
+const updateUser = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const result = await UserService.updateOneInDB(id, req.body);
-  sendResponse(res, {
+  const result = await UserService.updateUserService(id, req.body);
+
+  sendResponse<Partial<User>>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'User updated sucessfully',
+    message: 'User updated successfully',
     data: result,
   });
 });
 
-//delete
-const deleteByIdFromDB = catchAsync(async (req: Request, res: Response) => {
+const deleteUser = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const result = await UserService.deleteByIdFromDB(id);
-  sendResponse(res, {
+  const result = await UserService.deleteUserService(id);
+
+  sendResponse<Partial<User>>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'User delete sucessfully',
+    message: 'User deleted successfully',
     data: result,
   });
 });
 
-export const UserController = {
-  insertIntoDB,
-  getAllFromDB,
-  getByIdFromDB,
-  updateOneInDB,
-  deleteByIdFromDB,
+export const userController = {
+  getAllUsers,
+  getUser,
+  updateUser,
+  deleteUser,
 };

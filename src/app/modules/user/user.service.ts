@@ -1,67 +1,73 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { User } from '@prisma/client';
-import { IGenericResponse } from '../../../interfaces/common';
+import httpStatus from 'http-status';
+import ApiError from '../../../errors/ApiError';
 import prisma from '../../../shared/prisma';
+import { returnUser } from '../auth/auth.constants';
 
-//create
-const insertIntoDB = async (data: User): Promise<User> => {
-  const result = await prisma.user.create({
-    data,
-  });
+const getUsersService = async (): Promise<
+  Partial<Omit<User, 'password'>[]>
+> => {
+  const result = await prisma.user.findMany({ select: returnUser });
+  if (!result) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Users retrieved failed');
+  }
   return result;
 };
 
-//get all data
-const getAllFromDB = async (): Promise<IGenericResponse<User[]>> => {
-  const result = await prisma.user.findMany();
-  const total = await prisma.user.count();
-  return {
-    meta: {
-      total,
-      page: 1,
-      limit: 10,
-    },
-    data: result,
-  };
-};
-
-// Get a Single User
-const getByIdFromDB = async (id: string): Promise<User | null> => {
+const getUserService = async (id: string): Promise<Partial<User>> => {
   const result = await prisma.user.findUnique({
     where: {
       id,
     },
+    select: returnUser,
   });
+
+  if (!result) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'User retrieved failed');
+  }
   return result;
 };
 
-//update
-const updateOneInDB = async (
+const updateUserService = async (
   id: string,
   payload: Partial<User>
-): Promise<User> => {
+): Promise<Partial<User>> => {
+  const { role, password, ...others } = payload;
+
   const result = await prisma.user.update({
     where: {
       id,
     },
-    data: payload,
+    data: others,
+    select: returnUser,
   });
+
+  if (!result) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'User update failed');
+  }
   return result;
 };
 
-//delete
-const deleteByIdFromDB = async (id: string): Promise<User> => {
+const deleteUserService = async (id: string): Promise<Partial<User>> => {
   const result = await prisma.user.delete({
     where: {
       id,
     },
+    select: returnUser,
   });
+
+  if (!result) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'User deleted failed');
+  }
   return result;
 };
 
 export const UserService = {
-  insertIntoDB,
-  getAllFromDB,
-  getByIdFromDB,
-  updateOneInDB,
-  deleteByIdFromDB,
+  getUsersService,
+  getUserService,
+  updateUserService,
+  deleteUserService,
 };
