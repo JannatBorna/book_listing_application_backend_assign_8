@@ -9,12 +9,6 @@ import prisma from '../../../shared/prisma';
 import { returnUser } from './auth.constants';
 import { IAuthSignin, IAuthSigninResponse } from './auth.interface';
 import { isExist } from './auth.utils';
-// import { ApiError } from '../../../errorFormating/apiError';
-// import { createToken } from '../../../helpers/jwtHelpers';
-// import prisma from '../../../utilities/prisma';
-// import { returnUser } from './auth.constants';
-// import { IAuthSignin, IAuthSigninResponse } from './auth.interfaces';
-// import { isExist } from './auth.utils';
 
 export const signUpService = async (
   data: User
@@ -30,7 +24,7 @@ export const signUpService = async (
   const { password } = data;
   const hashedPassword = await bcrypt.hash(
     password,
-    Number(config.bcrypt_solt_round)
+    Number(config.bycrypt_salt_rounds)
   );
   data.password = hashedPassword;
 

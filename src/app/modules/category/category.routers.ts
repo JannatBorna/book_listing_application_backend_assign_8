@@ -1,7 +1,9 @@
 import express from 'express';
 import { ENUM_USER_ROLE } from '../../../enums/user';
 import auth from '../../middlewares/auth';
+import validateRequest from '../../middlewares/validateRequest';
 import { CategoryController } from './category.controller';
+import { categoryValidation } from './category.validations';
 
 const router = express.Router();
 
@@ -15,6 +17,7 @@ router.get('/:id', CategoryController.getByIdFromDB);
 router.post(
   '/create-category',
   auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+  validateRequest(categoryValidation.create),
   CategoryController.insertIntoDB
 );
 
@@ -22,6 +25,7 @@ router.post(
 router.patch(
   '/:id',
   auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+  validateRequest(categoryValidation.create),
   CategoryController.updateOneInDB
 );
 
