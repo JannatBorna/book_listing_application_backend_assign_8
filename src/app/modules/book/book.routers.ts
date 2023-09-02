@@ -25,4 +25,4 @@ router
   .patch(auth(ENUM_USER_ROLE.ADMIN), BookController.updateBook)
   .delete(auth(ENUM_USER_ROLE.ADMIN), BookController.deleteBook);
 
-export default router;
+export const bookRoutes = router;

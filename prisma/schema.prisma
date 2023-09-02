@@ -33,7 +33,6 @@ model Category {
   id         String   @id @default(uuid()) 
   title      String
   books      Book[]
-  bookcategories  BookCategory[]
 
   @@map("categories")
 }
@@ -52,7 +51,6 @@ model Book {
   createdAt        DateTime          @default(now())
   updatedAt        DateTime          @updatedAt
   reviewAndRatings ReviewAndRating[] 
-  bookcategories  BookCategory[]
   
 
   @@map("books")
@@ -88,35 +86,6 @@ model Order {
   @@map("orders")
 }
 
-
-
-// schema.prisma
-
-// model OrderedBook {
-  // id       String @id @default(uuid())
-
-  // order    Order   @relation(fields: [orderId], references: [id])
-  // orderId  String
-
-  // book     Book  @relation(fields: [bookId], references: [id])
-  // bookId   String
-
-  // quantity Int
-
-  // @@map("orderedBooks")
-// }
-
-model BookCategory {
-
-  book Book @relation(fields: [bookId], references: [id])
-  bookId      String
-
-  category Category @relation(fields: [categoryId], references: [id])
-  categoryId  String
-
-  @@id([bookId, categoryId])
-  @@map("book_category")
-}
 
  enum Role {
    admin
