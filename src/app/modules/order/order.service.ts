@@ -1,9 +1,7 @@
 import { Order, User } from '@prisma/client';
-// import prisma from '../../../utilities/prisma';
 import httpStatus from 'http-status';
 import ApiError from '../../../errors/ApiError';
 import prisma from '../../../shared/prisma';
-// import { ApiError } from './../../../errorFormating/apiError';
 
 const createOrderService = async (
   userId: string,

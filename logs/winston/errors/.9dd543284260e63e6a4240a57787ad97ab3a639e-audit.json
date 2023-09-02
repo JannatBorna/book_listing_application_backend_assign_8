@@ -99,6 +99,11 @@
             "date": 1693652434539,
             "name": "/Users/jannatborna/Documents/WEB-DEVELOPER/Next-Level-WD/Miss-6-SQL/assignment-8/logs/winston/errors/phu-2023-02-09-17-error.log",
             "hash": "acbf632eeea8c3d04a64825b90f321cbf32fc121be5e2fbbca5ca22795932519"
+        },
+        {
+            "date": 1693656051756,
+            "name": "/Users/jannatborna/Documents/WEB-DEVELOPER/Next-Level-WD/Miss-6-SQL/assignment-8/logs/winston/errors/phu-2023-02-09-18-error.log",
+            "hash": "a53e95766b06372714631e75dab6ed868f2ce1532fd0bde418ea138465a8aa5f"
         }
     ],
     "hashType": "sha256"
