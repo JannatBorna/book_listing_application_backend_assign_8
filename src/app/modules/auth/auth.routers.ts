@@ -1,6 +1,4 @@
 import express from 'express';
-// import reqValidate from '../../../middleware/reqValidate';
-// import { signIn, signUp } from './auth.controllers';
 import validateRequest from '../../middlewares/validateRequest';
 import { signIn, signUp } from './auth.controller';
 import { signInZod, signUpZod } from './auth.validations';
