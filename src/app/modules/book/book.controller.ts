@@ -1,84 +1,96 @@
+import { Book } from '@prisma/client';
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
+import { paginationFields } from '../../../constants/pagination';
 import catchAsync from '../../../shared/catchAsync';
+import pick from '../../../shared/pick';
 import sendResponse from '../../../shared/sendResponse';
+import { bookFilterableFields } from './book.constants';
 import { BookService } from './book.service';
 
-const insertIntoDB = catchAsync(async (req: Request, res: Response) => {
-  const result = await BookService.insertIntoDB(req.body);
-  sendResponse(res, {
+const createBook = catchAsync(async (req: Request, res: Response) => {
+  const result = await BookService.createBookService(req.body);
+  sendResponse<Book>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Book created successfully!',
+    message: 'Book created successfully',
     data: result,
   });
 });
 
-// get all data
-const getAllFromDB = catchAsync(async (req: Request, res: Response) => {
-  const result = await BookService.getAllFromDB();
-  sendResponse(res, {
+const getBooks = catchAsync(async (req: Request, res: Response) => {
+  const paginationOptions = pick(req.query, paginationFields);
+  const filters = pick(req.query, bookFilterableFields);
+  const result = await BookService.getBooksService(paginationOptions, filters);
+  sendResponse<Book[]>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Books data fetch sucessfully',
+    message: 'Books fetched  successfully',
     meta: result.meta,
     data: result.data,
   });
 });
 
-// Get a Single Book
-const getByIdFromDB = catchAsync(async (req: Request, res: Response) => {
+const getBook = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const result = await BookService.getByIdFromDB(id);
-  sendResponse(res, {
+  const result = await BookService.getBookService(id);
+  sendResponse<Book>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Book single data fetch sucessfully!!',
+    message: 'Book fetched successfully',
     data: result,
   });
 });
 
-//Update a Single Book
-const updateOneInDB = catchAsync(async (req: Request, res: Response) => {
-  const { id } = req.params;
-  const result = await BookService.updateOneInDB(id, req.body);
-  sendResponse(res, {
+const getBookByCategoryId = catchAsync(async (req: Request, res: Response) => {
+  const { categoryId } = req.params;
+  const paginationOptions = pick(req.query, paginationFields);
+  const filters = pick(req.query, bookFilterableFields);
+
+  const result = await BookService.getBookByCategoryIdService(
+    categoryId,
+    paginationOptions,
+    filters
+  );
+
+  sendResponse<Book[]>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Book Update sucessfully!!',
+    message: 'Book fetched  successfully',
+    meta: result.meta,
+    data: result.data,
+  });
+});
+
+const updateBook = catchAsync(async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const result = await BookService.updateBookService(id, req.body);
+
+  sendResponse<Partial<Book>>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Book updated successfully',
     data: result,
   });
 });
 
-// Delete a book
-const deleteByIdFromDB = catchAsync(async (req: Request, res: Response) => {
+const deleteBook = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const result = await BookService.deleteByIdFromDB(id);
-  sendResponse(res, {
+  const result = await BookService.deleteBookService(id);
+
+  sendResponse<Partial<Book>>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Book Delete sucessfully!!',
-    data: result,
-  });
-});
-// Assign Category
-const assignCategory = catchAsync(async (req: Request, res: Response) => {
-  const { id } = req.params;
-  // console.log(req.body.books);
-  const result = await BookService.assignCategory(id, req.body.books);
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'Book category assign successfully',
+    message: 'Book delete successfully',
     data: result,
   });
 });
 
 export const BookController = {
-  insertIntoDB,
-  getAllFromDB,
-  getByIdFromDB,
-  updateOneInDB,
-  deleteByIdFromDB,
-  assignCategory,
+  createBook,
+  getBooks,
+  getBook,
+  getBookByCategoryId,
+  updateBook,
+  deleteBook,
 };

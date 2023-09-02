@@ -1,42 +1,28 @@
 import express from 'express';
 import { ENUM_USER_ROLE } from '../../../enums/user';
 import auth from '../../middlewares/auth';
+import validateRequest from '../../middlewares/validateRequest';
 import { BookController } from './book.controller';
+import { BookValidation } from './book.validations';
 
 const router = express.Router();
-//get all data
-router.get('/', BookController.getAllFromDB);
 
-//get all data
-router.get('/:id', BookController.getByIdFromDB);
+router
+  .route('/create-book')
+  .post(
+    auth(ENUM_USER_ROLE.ADMIN),
+    validateRequest(BookValidation.create),
+    BookController.createBook
+  );
 
-//create
-router.post(
-  '/create-book',
-  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
-  BookController.insertIntoDB
-);
+router.route('/').get(BookController.getBooks);
 
-//Update a Single Book
-router.patch(
-  '/:id',
-  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
-  BookController.updateOneInDB
-);
+router.route('/:categoryId/category').get(BookController.getBookByCategoryId);
 
-//Delete a book
-router.delete(
-  '/:id',
-  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
-  BookController.deleteByIdFromDB
-);
+router
+  .route('/:id')
+  .get(BookController.getBook)
+  .patch(auth(ENUM_USER_ROLE.ADMIN), BookController.updateBook)
+  .delete(auth(ENUM_USER_ROLE.ADMIN), BookController.deleteBook);
 
-// Assign-Faculties
-router.post(
-  '/:id/category',
-  // validateRequest(CourseValidation.assignOrRemoveFaculties),
-  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
-  BookController.assignCategory
-);
-
-export const bookRouters = router;
+export default router;
