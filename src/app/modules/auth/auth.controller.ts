@@ -6,10 +6,6 @@ import catchAsync from '../../../shared/catchAsync';
 import sendResponse from '../../../shared/sendResponse';
 import { IAuthSigninResponse } from './auth.interface';
 import { signInService, signUpService } from './auth.service';
-// import { sendRes } from '../../../utilities/sendRes';
-// import { tryCatch } from '../../../utilities/tryCatch';
-// import { IAuthSigninResponse } from './auth.interfaces';
-// import { signInService, signUpService } from './auth.services';
 
 export const signUp = catchAsync(async (req: Request, res: Response) => {
   const result = await signUpService(req.body);

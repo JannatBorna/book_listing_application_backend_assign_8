@@ -24,7 +24,7 @@ export const signUpService = async (
   const { password } = data;
   const hashedPassword = await bcrypt.hash(
     password,
-    Number(config.bycrypt_salt_rounds)
+    Number(config.bcrypt_solt_round)
   );
   data.password = hashedPassword;
 

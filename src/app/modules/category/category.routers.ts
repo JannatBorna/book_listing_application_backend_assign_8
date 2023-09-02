@@ -16,7 +16,7 @@ router.get('/:id', CategoryController.getByIdFromDB);
 //create
 router.post(
   '/create-category',
-  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+  auth(ENUM_USER_ROLE.ADMIN),
   validateRequest(categoryValidation.create),
   CategoryController.insertIntoDB
 );
@@ -24,7 +24,7 @@ router.post(
 //update
 router.patch(
   '/:id',
-  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+  auth(ENUM_USER_ROLE.ADMIN),
   validateRequest(categoryValidation.create),
   CategoryController.updateOneInDB
 );
@@ -32,7 +32,7 @@ router.patch(
 //delete
 router.delete(
   '/:id',
-  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+  auth(ENUM_USER_ROLE.ADMIN),
   CategoryController.deleteByIdFromDB
 );
 
