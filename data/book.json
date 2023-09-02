@@ -1,0 +1,122 @@
+ [
+        {
+            "id": "02fdb855-994d-4ba1-a21c-f38042a9e6d8",
+            "title": "Update - The Catcher in the Rye",
+            "author": "Update - J.D. Salinger",
+            "price": 400,
+            "genre": "Update - Fiction",
+            "publicationDate": "1900-07-01T00:00:00.000Z",
+            "categoryId": "8e850422-acf0-4276-8591-6da7b3d66302",
+            "createdAt": "2023-09-01T16:30:36.498Z",
+            "updatedAt": "2023-09-02T12:14:26.937Z",
+            "category": {
+                "id": "8e850422-acf0-4276-8591-6da7b3d66302",
+                "title": "Programming"
+            }
+        },
+        {
+            "id": "78fc4d74-8848-48d8-b7c1-1762fb6498f0",
+            "title": "The Pragmatic Programmer",
+            "author": "David Thomas",
+            "price": 120.1,
+            "genre": "Addison-Wesley",
+            "publicationDate": "1520-07-01T00:00:00.000Z",
+            "categoryId": "ffd911ed-9871-45a3-bce3-6414a4b59a9f",
+            "createdAt": "2023-09-01T16:33:57.355Z",
+            "updatedAt": "2023-09-01T16:33:57.355Z",
+            "category": {
+                "id": "ffd911ed-9871-45a3-bce3-6414a4b59a9f",
+                "title": "Microsoft"
+            }
+        },
+        {
+            "id": "4b0bdedd-da3a-49b7-90a7-c169294fddf4",
+            "title": "The Clean Coder",
+            "author": "Martin",
+            "price": 300,
+            "genre": "Code of Conduct for Professional Programmers",
+            "publicationDate": "1820-07-01T00:00:00.000Z",
+            "categoryId": "8e850422-acf0-4276-8591-6da7b3d66302",
+            "createdAt": "2023-09-01T16:31:56.515Z",
+            "updatedAt": "2023-09-01T16:31:56.515Z",
+            "category": {
+                "id": "8e850422-acf0-4276-8591-6da7b3d66302",
+                "title": "Programming"
+            }
+        },
+        {
+            "id": "2a691620-b4fe-42c2-b00a-509c9666a3c4",
+            "title": "The Art of Computer Programming",
+            "author": "Donald E. Knuth",
+            "price": 160.1,
+            "genre": "Combinatorial Algorithms",
+            "publicationDate": "1520-07-01T00:00:00.000Z",
+            "categoryId": "766c7cc6-c93f-4043-99c7-12cdbbebf34b",
+            "createdAt": "2023-09-01T16:37:03.606Z",
+            "updatedAt": "2023-09-01T16:37:03.606Z",
+            "category": {
+                "id": "766c7cc6-c93f-4043-99c7-12cdbbebf34b",
+                "title": "update - Developer"
+            }
+        },
+        {
+            "id": "5eade5ea-e33e-4639-93e0-551009fdb697",
+            "title": "Headfirst Design Patterns",
+            "author": "Elisabeth Freeman",
+            "price": 160.1,
+            "genre": "software development",
+            "publicationDate": "1520-07-01T00:00:00.000Z",
+            "categoryId": "766c7cc6-c93f-4043-99c7-12cdbbebf34b",
+            "createdAt": "2023-09-01T16:38:52.892Z",
+            "updatedAt": "2023-09-01T16:38:52.892Z",
+            "category": {
+                "id": "766c7cc6-c93f-4043-99c7-12cdbbebf34b",
+                "title": "update - Developer"
+            }
+        },
+        {
+            "id": "9dc6e639-9f4a-4e6f-a293-dbe14026f4e1",
+            "title": "Elements of Reusable Object-Oriented Software",
+            "author": "Erich Gamma, Richard Helm",
+            "price": 160.1,
+            "genre": "software design patterns",
+            "publicationDate": "1520-07-01T00:00:00.000Z",
+            "categoryId": "ffd911ed-9871-45a3-bce3-6414a4b59a9f",
+            "createdAt": "2023-09-01T16:35:26.258Z",
+            "updatedAt": "2023-09-01T16:35:26.258Z",
+            "category": {
+                "id": "ffd911ed-9871-45a3-bce3-6414a4b59a9f",
+                "title": "Microsoft"
+            }
+        },
+        {
+            "id": "e34457f6-8281-43d6-9d7a-70162abafe87",
+            "title": "Code Complete",
+            "author": "Steve Mcconnell",
+            "price": 340.1,
+            "genre": "Microsoft Press US",
+            "publicationDate": "1820-07-01T00:00:00.000Z",
+            "categoryId": "ffd911ed-9871-45a3-bce3-6414a4b59a9f",
+            "createdAt": "2023-09-01T16:33:12.714Z",
+            "updatedAt": "2023-09-01T16:33:12.714Z",
+            "category": {
+                "id": "ffd911ed-9871-45a3-bce3-6414a4b59a9f",
+                "title": "Microsoft"
+            }
+        },
+        {
+            "id": "61c3e344-40f0-4611-897e-f2bad850d651",
+            "title": "C Programming Language",
+            "author": "Brian W. Kernighan",
+            "price": 420,
+            "genre": "Programming Language",
+            "publicationDate": "2000-07-01T00:00:00.000Z",
+            "categoryId": "8e850422-acf0-4276-8591-6da7b3d66302",
+            "createdAt": "2023-09-01T16:29:05.598Z",
+            "updatedAt": "2023-09-01T16:29:05.598Z",
+            "category": {
+                "id": "8e850422-acf0-4276-8591-6da7b3d66302",
+                "title": "Programming"
+            }
+        }
+    ]
