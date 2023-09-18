@@ -1,4 +1,3 @@
-import { Order, User } from '@prisma/client';
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
 import catchAsync from '../../../shared/catchAsync';
@@ -6,34 +5,32 @@ import sendResponse from '../../../shared/sendResponse';
 import { OrderService } from './order.service';
 
 const createOrder = catchAsync(async (req: Request, res: Response) => {
-  const result = await OrderService.createOrderService(req.user?.id, req.body);
+  const userId = req.user?.userId;
+  const result = await OrderService.createOrder(userId, req.body);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Create Order successfully',
+    message: 'Order created successfully',
     data: result,
   });
 });
 
-const getOrders = catchAsync(async (req: Request, res: Response) => {
-  const result = await OrderService.getOrdersService(req.user as Partial<User>);
-
-  sendResponse<Order[]>(res, {
+const getAllOrders = catchAsync(async (req: Request, res: Response) => {
+  const user = req.user;
+  const result = await OrderService.getAllOrders(user);
+  sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Orders fetched  successfully',
+    message: 'Orders fetched successfully',
     data: result,
   });
 });
 
-const getOrder = catchAsync(async (req: Request, res: Response) => {
-  const { orderId } = req.params;
-  const result = await OrderService.getOrderService(
-    req.user as Partial<User>,
-    orderId
-  );
-
-  sendResponse<Order>(res, {
+const getSingleOrder = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const user = req.user;
+  const result = await OrderService.getSingleOrder(id, user);
+  sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: 'Order fetched successfully',
@@ -43,6 +40,6 @@ const getOrder = catchAsync(async (req: Request, res: Response) => {
 
 export const OrderController = {
   createOrder,
-  getOrders,
-  getOrder,
+  getAllOrders,
+  getSingleOrder,
 };

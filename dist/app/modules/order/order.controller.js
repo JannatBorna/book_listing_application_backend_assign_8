@@ -19,26 +19,29 @@ const sendResponse_1 = __importDefault(require("../../../shared/sendResponse"));
 const order_service_1 = require("./order.service");
 const createOrder = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
-    const result = yield order_service_1.OrderService.createOrderService((_a = req.user) === null || _a === void 0 ? void 0 : _a.id, req.body);
+    const userId = (_a = req.user) === null || _a === void 0 ? void 0 : _a.userId;
+    const result = yield order_service_1.OrderService.createOrder(userId, req.body);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: 'Create Order successfully',
+        message: 'Order created successfully',
         data: result,
     });
 }));
-const getOrders = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield order_service_1.OrderService.getOrdersService(req.user);
+const getAllOrders = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const user = req.user;
+    const result = yield order_service_1.OrderService.getAllOrders(user);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: 'Orders fetched  successfully',
+        message: 'Orders fetched successfully',
         data: result,
     });
 }));
-const getOrder = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { orderId } = req.params;
-    const result = yield order_service_1.OrderService.getOrderService(req.user, orderId);
+const getSingleOrder = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = req.params.id;
+    const user = req.user;
+    const result = yield order_service_1.OrderService.getSingleOrder(id, user);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
@@ -48,6 +51,6 @@ const getOrder = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 
 }));
 exports.OrderController = {
     createOrder,
-    getOrders,
-    getOrder,
+    getAllOrders,
+    getSingleOrder,
 };

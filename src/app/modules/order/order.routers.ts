@@ -5,23 +5,22 @@ import { OrderController } from './order.controller';
 
 const router = express.Router();
 
-// example route
-router
-  .route('/create-order')
-  .post(auth(ENUM_USER_ROLE.CUSTOMER), OrderController.createOrder);
+router.post(
+  '/create-order',
+  auth(ENUM_USER_ROLE.CUSTOMER),
+  OrderController.createOrder
+);
 
-router
-  .route('/')
-  .get(
-    auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.CUSTOMER),
-    OrderController.getOrders
-  );
+router.get(
+  '/',
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.CUSTOMER),
+  OrderController.getAllOrders
+);
 
-router
-  .route('/:orderId')
-  .get(
-    auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.CUSTOMER),
-    OrderController.getOrder
-  );
+router.get(
+  '/:id',
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.CUSTOMER),
+  OrderController.getSingleOrder
+);
 
-export const orderRouters = router;
+export const orderRoutes = router;

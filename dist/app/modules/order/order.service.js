@@ -13,57 +13,55 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrderService = void 0;
-const http_status_1 = __importDefault(require("http-status"));
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const ApiError_1 = __importDefault(require("../../../errors/ApiError"));
 const prisma_1 = __importDefault(require("../../../shared/prisma"));
-const createOrderService = (userId, payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const { orderedBooks } = payload;
-    if (orderedBooks) {
-        const orderData = {
-            userId: userId,
-            orderedBooks: orderedBooks,
-        };
-        const result = yield prisma_1.default.order.create({
-            data: orderData,
-        });
-        return result;
-    }
-    else {
-        throw new ApiError_1.default(http_status_1.default.BAD_GATEWAY, `Order created failed`);
-    }
+const createOrder = (id, data) => __awaiter(void 0, void 0, void 0, function* () {
+    const { orderedBooks, status } = data;
+    const order = yield prisma_1.default.order.create({
+        data: {
+            userId: id,
+            orderedBooks,
+            status: status,
+        },
+    });
+    return order;
 });
-const getOrdersService = (user) => __awaiter(void 0, void 0, void 0, function* () {
-    let result;
-    if (user.role === 'admin') {
-        result = yield prisma_1.default.order.findMany({});
+const getAllOrders = (user) => __awaiter(void 0, void 0, void 0, function* () {
+    const { userId, role } = user;
+    if (role === 'admin') {
+        const order = yield prisma_1.default.order.findMany({});
+        return order;
     }
-    else {
-        result = yield prisma_1.default.order.findMany({ where: { userId: user.id } });
-    }
-    if (!result) {
-        throw new ApiError_1.default(http_status_1.default.NOT_FOUND, 'Orders not found');
-    }
-    return result;
+    const order = yield prisma_1.default.order.findMany({
+        where: {
+            userId,
+        },
+    });
+    return order;
 });
-const getOrderService = (user, id) => __awaiter(void 0, void 0, void 0, function* () {
-    let result;
-    if (user.role === 'customer') {
-        result = yield prisma_1.default.order.findUnique({ where: { id, userId: user.id } });
-    }
-    else {
-        result = yield prisma_1.default.order.findUnique({
+const getSingleOrder = (id, user) => __awaiter(void 0, void 0, void 0, function* () {
+    const { userId, role } = user;
+    if (role === 'admin') {
+        const order = yield prisma_1.default.order.findUnique({
             where: {
                 id,
             },
         });
+        return order;
     }
-    if (!result) {
-        throw new ApiError_1.default(http_status_1.default.NOT_FOUND, 'Orders not found');
+    const order = yield prisma_1.default.order.findUnique({
+        where: {
+            id,
+        },
+    });
+    if ((order === null || order === void 0 ? void 0 : order.userId) !== userId) {
+        throw new ApiError_1.default(403, 'You are not authorized to view this order');
     }
-    return result;
+    return order;
 });
 exports.OrderService = {
-    createOrderService,
-    getOrdersService,
-    getOrderService,
+    createOrder,
+    getAllOrders,
+    getSingleOrder,
 };

@@ -40,7 +40,7 @@ const moduleRoutes = [
     },
     {
         path: '/orders',
-        route: order_routers_1.orderRouters,
+        route: order_routers_1.orderRoutes,
     },
 ];
 moduleRoutes.forEach(route => router.use(route.path, route.route));
