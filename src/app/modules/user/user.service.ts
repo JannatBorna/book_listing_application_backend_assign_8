@@ -7,7 +7,7 @@ import ApiError from '../../../errors/ApiError';
 import prisma from '../../../shared/prisma';
 import { returnUser } from '../auth/auth.constants';
 
-const getUsersService = async (): Promise<
+export const getUsersService = async (): Promise<
   Partial<Omit<User, 'password'>[]>
 > => {
   const result = await prisma.user.findMany({ select: returnUser });
@@ -17,7 +17,7 @@ const getUsersService = async (): Promise<
   return result;
 };
 
-const getUserService = async (id: string): Promise<Partial<User>> => {
+export const getUserService = async (id: string): Promise<Partial<User>> => {
   const result = await prisma.user.findUnique({
     where: {
       id,
@@ -31,7 +31,7 @@ const getUserService = async (id: string): Promise<Partial<User>> => {
   return result;
 };
 
-const updateUserService = async (
+export const updateUserService = async (
   id: string,
   payload: Partial<User>
 ): Promise<Partial<User>> => {
@@ -51,7 +51,7 @@ const updateUserService = async (
   return result;
 };
 
-const deleteUserService = async (id: string): Promise<Partial<User>> => {
+export const deleteUserService = async (id: string): Promise<Partial<User>> => {
   const result = await prisma.user.delete({
     where: {
       id,
@@ -63,11 +63,4 @@ const deleteUserService = async (id: string): Promise<Partial<User>> => {
     throw new ApiError(httpStatus.BAD_REQUEST, 'User deleted failed');
   }
   return result;
-};
-
-export const UserService = {
-  getUsersService,
-  getUserService,
-  updateUserService,
-  deleteUserService,
 };

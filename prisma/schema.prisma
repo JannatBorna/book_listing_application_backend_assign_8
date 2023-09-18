@@ -12,20 +12,24 @@ datasource db {
 
 // user
 model User {
-  id             String   @id @default(uuid()) 
-  name           String
-  email          String   @unique
-  password       String
-  role           Role     @default(customer)  
-  contactNo      String
-  address        String
-  profileImg     String
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
-  reviewAndRatings  ReviewAndRating[]
-  orders  Order[]
-  
-  @@map("user")
+  id         String @id @default(uuid())
+  name       String
+  email      String @unique
+  password   String
+  role       Role
+  contactNo  String
+  address    String
+  profileImg String
+
+  reviewAndRatings ReviewAndRating[]
+  orders           Order[]
+
+  @@map("users")
+}
+
+enum Role {
+  admin
+  customer
 }
 
 //Category
@@ -85,10 +89,6 @@ model Order {
   @@map("orders")
 }
 
- enum Role {
-   admin
-   customer
- }
 
 
 enum Status {

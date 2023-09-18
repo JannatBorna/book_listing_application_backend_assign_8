@@ -1,20 +1,25 @@
-import { User } from '@prisma/client';
 import { Request, Response } from 'express';
-import httpStatus from 'http-status';
-// import { sendRes } from '../../../utilities/sendRes';
 // import { tryCatch } from '../../../utilities/tryCatch';
+// import { sendRes } from '../../../utilities/sendRes';
+import { User } from '@prisma/client';
+import httpStatus from 'http-status';
 import catchAsync from '../../../shared/catchAsync';
 import sendResponse from '../../../shared/sendResponse';
-import { UserService } from './user.service';
+import {
+  deleteUserService,
+  getUserService,
+  getUsersService,
+  updateUserService,
+} from './user.service';
 // import {
 // deleteUserService,
 // getUserService,
 // getUsersService,
 // updateUserService,
-// } from './user.service';
+// } from './user.services';
 
-const getAllUsers = catchAsync(async (req: Request, res: Response) => {
-  const result = await UserService.getUsersService();
+export const getUsers = catchAsync(async (req: Request, res: Response) => {
+  const result = await getUsersService();
 
   sendResponse<Partial<Omit<User, 'password'>[]>>(res, {
     statusCode: httpStatus.OK,
@@ -24,9 +29,9 @@ const getAllUsers = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-const getUser = catchAsync(async (req: Request, res: Response) => {
+export const getUser = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const result = await UserService.getUserService(id);
+  const result = await getUserService(id);
 
   sendResponse<Partial<User>>(res, {
     statusCode: httpStatus.OK,
@@ -36,9 +41,9 @@ const getUser = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-const updateUser = catchAsync(async (req: Request, res: Response) => {
+export const updateUser = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const result = await UserService.updateUserService(id, req.body);
+  const result = await updateUserService(id, req.body);
 
   sendResponse<Partial<User>>(res, {
     statusCode: httpStatus.OK,
@@ -48,9 +53,9 @@ const updateUser = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-const deleteUser = catchAsync(async (req: Request, res: Response) => {
+export const deleteUser = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const result = await UserService.deleteUserService(id);
+  const result = await deleteUserService(id);
 
   sendResponse<Partial<User>>(res, {
     statusCode: httpStatus.OK,
@@ -59,10 +64,3 @@ const deleteUser = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
-
-export const userController = {
-  getAllUsers,
-  getUser,
-  updateUser,
-  deleteUser,
-};
