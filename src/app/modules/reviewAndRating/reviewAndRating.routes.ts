@@ -32,4 +32,4 @@ router.delete(
   ReviewAndRatingController.deleteByIdFromDB
 );
 
-export const reviewAndRatingRouters = router;
+export const reviewRoutes = router;

@@ -4,7 +4,7 @@ import { bookRoutes } from '../modules/book/book.routers';
 import { categoryRouters } from '../modules/category/category.routers';
 import { orderRouters } from '../modules/order/order.routers';
 import { profileRouter } from '../modules/profile/profile.routes';
-import { reviewAndRatingRouters } from '../modules/reviewAndRating/reviewAndRating.routes';
+import { reviewRoutes } from '../modules/reviewAndRating/reviewAndRating.routes';
 import { userRouters } from '../modules/user/user.routers';
 
 const router = express.Router();
@@ -36,7 +36,7 @@ const moduleRoutes = [
 
   {
     path: '/reviews',
-    route: reviewAndRatingRouters,
+    route: reviewRoutes,
   },
 
   {
