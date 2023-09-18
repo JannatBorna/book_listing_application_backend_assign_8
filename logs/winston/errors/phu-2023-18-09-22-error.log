@@ -1,0 +1,218 @@
+Mon Sep 18 2023 22:14:59 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ 
+Invalid `prisma.order.create()` invocation:
+
+
+Foreign key constraint failed on the field: `orders_userId_fkey (index)`
+Mon Sep 18 2023 22:15:31 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ 
+Invalid `prisma.user.findUnique()` invocation:
+
+{
+  where: {
+    id: undefined,
+?   email?: String,
+?   AND?: UserWhereInput | UserWhereInput[],
+?   OR?: UserWhereInput[],
+?   NOT?: UserWhereInput | UserWhereInput[],
+?   name?: StringFilter | String,
+?   password?: StringFilter | String,
+?   role?: EnumRoleFilter | Role,
+?   contactNo?: StringFilter | String,
+?   address?: StringFilter | String,
+?   profileImg?: StringFilter | String,
+?   reviewAndRatings?: ReviewAndRatingListRelationFilter,
+?   orders?: OrderListRelationFilter
+  },
+  select: {
+    id: true,
+    name: true,
+    email: true,
+    role: true,
+    contactNo: true,
+    address: true,
+    profileImg: true
+  }
+}
+
+Argument `where` of type UserWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are listed in green.
+Mon Sep 18 2023 22:15:52 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "name"
+    ],
+    "message": "Z: Name is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "role"
+    ],
+    "message": "Z: Role is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "contactNo"
+    ],
+    "message": "Z: Contact number is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "address"
+    ],
+    "message": "Z: Address is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "profileImg"
+    ],
+    "message": "Z: Profile image link is required"
+  }
+]
+Mon Sep 18 2023 22:16:25 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ Unexpected token ' ', "#" is not valid JSON
+Mon Sep 18 2023 22:16:35 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ Unexpected token ' ', "#" is not valid JSON
+Mon Sep 18 2023 22:16:36 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ Unexpected token ' ', "#" is not valid JSON
+Mon Sep 18 2023 22:16:42 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ Unexpected token ' ', "#" is not valid JSON
+Mon Sep 18 2023 22:16:44 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ Unexpected token ' ', "#" is not valid JSON
+Mon Sep 18 2023 22:16:52 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ 
+Invalid `prisma.order.create()` invocation:
+
+
+Foreign key constraint failed on the field: `orders_userId_fkey (index)`
+Mon Sep 18 2023 22:17:10 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ 
+Invalid `prisma.order.create()` invocation:
+
+
+Foreign key constraint failed on the field: `orders_userId_fkey (index)`
+Mon Sep 18 2023 22:17:41 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ 
+Invalid `prisma.order.create()` invocation:
+
+{
+  data: {
+    userId: "0b2d6bb5-9a27-471c-a6ca-14c8c7c0ab43",
+    status: undefined,
++   orderedBooks: JsonNullValueInput | Json
+  }
+}
+
+Argument `orderedBooks` is missing.
+Mon Sep 18 2023 22:17:48 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ 
+Invalid `prisma.order.create()` invocation:
+
+
+Foreign key constraint failed on the field: `orders_userId_fkey (index)`
+Mon Sep 18 2023 22:18:30 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ 
+Invalid `prisma.order.create()` invocation:
+
+
+Foreign key constraint failed on the field: `orders_userId_fkey (index)`
+Mon Sep 18 2023 22:21:6 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ 
+Invalid `prisma.order.create()` invocation:
+
+
+Foreign key constraint failed on the field: `orders_userId_fkey (index)`
+Mon Sep 18 2023 22:21:51 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ 
+Invalid `prisma.order.create()` invocation:
+
+
+Foreign key constraint failed on the field: `orders_userId_fkey (index)`
+Mon Sep 18 2023 22:22:9 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ 
+Invalid `prisma.order.create()` invocation:
+
+
+Foreign key constraint failed on the field: `orders_userId_fkey (index)`
+Mon Sep 18 2023 22:22:23 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ 
+Invalid `prisma.order.create()` invocation:
+
+
+Foreign key constraint failed on the field: `orders_userId_fkey (index)`
+Mon Sep 18 2023 22:22:32 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ 
+Invalid `prisma.order.create()` invocation:
+
+
+Foreign key constraint failed on the field: `orders_userId_fkey (index)`
+Mon Sep 18 2023 22:24:8 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ 
+Invalid `prisma.user.findMany()` invocation:
+
+
+Timed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 17)
+Mon Sep 18 2023 22:24:36 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ 
+Invalid `prisma.user.findMany()` invocation:
+
+
+Can't reach database server at `containers-us-west-179.railway.app`:`6992`
+
+Please make sure your database server is running at `containers-us-west-179.railway.app`:`6992`.
+Mon Sep 18 2023 22:24:42 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ 
+Invalid `prisma.user.findMany()` invocation:
+
+
+Can't reach database server at `containers-us-west-179.railway.app`:`6992`
+
+Please make sure your database server is running at `containers-us-west-179.railway.app`:`6992`.
+Mon Sep 18 2023 22:24:43 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ 
+Invalid `prisma.user.findMany()` invocation:
+
+
+Can't reach database server at `containers-us-west-179.railway.app`:`6992`
+
+Please make sure your database server is running at `containers-us-west-179.railway.app`:`6992`.
+Mon Sep 18 2023 22:24:53 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ 
+Invalid `prisma.order.create()` invocation:
+
+
+Can't reach database server at `containers-us-west-179.railway.app`:`6992`
+
+Please make sure your database server is running at `containers-us-west-179.railway.app`:`6992`.
+Mon Sep 18 2023 22:28:11 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ 
+Invalid `prisma.order.create()` invocation:
+
+
+Foreign key constraint failed on the field: `orders_userId_fkey (index)`
+Mon Sep 18 2023 22:29:43 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ 
+Invalid `prisma.order.create()` invocation:
+
+{
+  data: {
+    userId: "0b2d6bb5-9a27-471c-a6ca-14c8c7c0ab43",
+    status: undefined,
++   orderedBooks: JsonNullValueInput | Json
+  }
+}
+
+Argument `orderedBooks` is missing.
+Mon Sep 18 2023 22:29:49 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ 
+Invalid `prisma.order.create()` invocation:
+
+{
+  data: {
+    userId: "0b2d6bb5-9a27-471c-a6ca-14c8c7c0ab43",
+    status: undefined,
++   orderedBooks: JsonNullValueInput | Json
+  }
+}
+
+Argument `orderedBooks` is missing.
+Mon Sep 18 2023 22:30:5 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ You are not authorized
+Mon Sep 18 2023 22:30:44 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ 
+Invalid `prisma.order.create()` invocation:
+
+
+Foreign key constraint failed on the field: `orders_userId_fkey (index)`
