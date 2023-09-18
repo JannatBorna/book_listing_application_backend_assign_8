@@ -1,39 +1,39 @@
-import cors from 'cors';
-import express, { Application, NextFunction, Request, Response } from 'express';
-import routers from './app/routes';
-// import { globalError } from './middleware/globalError';
-// import { sendRes } from './utilities/sendRes';
-import cookieParser from 'cookie-parser';
-import httpStatus from 'http-status';
-import globalErrorHandler from './app/middlewares/globalErrorHandler';
-import sendResponse from './shared/sendResponse';
-const app: Application = express();
-
+'use strict';
+var __importDefault =
+  (this && this.__importDefault) ||
+  function (mod) {
+    return mod && mod.__esModule ? mod : { default: mod };
+  };
+Object.defineProperty(exports, '__esModule', { value: true });
+const express_1 = __importDefault(require('express'));
+const cors_1 = __importDefault(require('cors'));
+const routes_1 = __importDefault(require('./app/routes'));
+const globalError_1 = require('./middleware/globalError');
+const sendRes_1 = require('./utilities/sendRes');
+const http_status_1 = __importDefault(require('http-status'));
+const cookie_parser_1 = __importDefault(require('cookie-parser'));
+const app = (0, express_1.default)();
 // Middleware
-app.use(cors());
-app.use(cookieParser());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
+app.use((0, cors_1.default)());
+app.use((0, cookie_parser_1.default)());
+app.use(express_1.default.json());
+app.use(express_1.default.urlencoded({ extended: true }));
 // Data API
-app.use('/api/v1', routers);
-
+app.use('/api/v1', routes_1.default);
 // Testing API
-app.get('/', (req: Request, res: Response) => {
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
+app.get('/', (req, res) => {
+  (0, sendRes_1.sendRes)(res, {
+    statusCode: http_status_1.default.OK,
     success: true,
     message: '+++ App Running Successfully +++',
     data: null,
   });
 });
-
 // Global error handle
-app.use(globalErrorHandler);
-
+app.use(globalError_1.globalError);
 // Unknown API Handle
-app.use((req: Request, res: Response, next: NextFunction) => {
-  res.status(httpStatus.NOT_FOUND).json({
+app.use((req, res, next) => {
+  res.status(http_status_1.default.NOT_FOUND).json({
     success: false,
     message: 'Not Found',
     errorMessage: [
@@ -45,5 +45,4 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   });
   next();
 });
-
-export default app;
+exports.default = app;

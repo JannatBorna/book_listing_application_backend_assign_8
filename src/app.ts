@@ -1,11 +1,9 @@
+import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express, { Application, NextFunction, Request, Response } from 'express';
-import routers from './app/routes';
-// import { globalError } from './middleware/globalError';
-// import { sendRes } from './utilities/sendRes';
-import cookieParser from 'cookie-parser';
 import httpStatus from 'http-status';
 import globalErrorHandler from './app/middlewares/globalErrorHandler';
+import routers from './app/routes';
 import sendResponse from './shared/sendResponse';
 const app: Application = express();
 
