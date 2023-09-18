@@ -16,4 +16,4 @@ router
   .patch(auth(ENUM_USER_ROLE.ADMIN), validateRequest(updateUserZod), updateUser)
   .delete(auth(ENUM_USER_ROLE.ADMIN), deleteUser);
 
-export default router;
+export const userRouters = router;
