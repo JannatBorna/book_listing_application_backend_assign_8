@@ -1,0 +1,93 @@
+Mon Sep 25 2023 2:17:59 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ 
+Invalid `prisma.user.findUnique()` invocation:
+
+{
+  where: {
+    id: undefined,
+?   email?: String,
+?   AND?: UserWhereInput | UserWhereInput[],
+?   OR?: UserWhereInput[],
+?   NOT?: UserWhereInput | UserWhereInput[],
+?   name?: StringFilter | String,
+?   password?: StringFilter | String,
+?   role?: EnumRoleFilter | Role,
+?   contactNo?: StringFilter | String,
+?   address?: StringFilter | String,
+?   profileImg?: StringFilter | String,
+?   reviewAndRatings?: ReviewAndRatingListRelationFilter,
+?   orders?: OrderListRelationFilter
+  },
+  select: {
+    id: true,
+    name: true,
+    email: true,
+    role: true,
+    contactNo: true,
+    address: true,
+    profileImg: true
+  }
+}
+
+Argument `where` of type UserWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are listed in green.
+Mon Sep 25 2023 2:20:26 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ 
+Invalid `prisma.user.findUnique()` invocation:
+
+{
+  where: {
+    id: undefined,
+?   email?: String,
+?   AND?: UserWhereInput | UserWhereInput[],
+?   OR?: UserWhereInput[],
+?   NOT?: UserWhereInput | UserWhereInput[],
+?   name?: StringFilter | String,
+?   password?: StringFilter | String,
+?   role?: EnumRoleFilter | Role,
+?   contactNo?: StringFilter | String,
+?   address?: StringFilter | String,
+?   profileImg?: StringFilter | String,
+?   reviewAndRatings?: ReviewAndRatingListRelationFilter,
+?   orders?: OrderListRelationFilter
+  },
+  select: {
+    id: true,
+    name: true,
+    email: true,
+    role: true,
+    contactNo: true,
+    address: true,
+    profileImg: true
+  }
+}
+
+Argument `where` of type UserWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are listed in green.
+Mon Sep 25 2023 2:27:31 } [PH] error: 🐱‍🏍 globalErrorHandler ~~ 
+Invalid `prisma.user.findUnique()` invocation:
+
+{
+  where: {
+    id: undefined,
+?   email?: String,
+?   AND?: UserWhereInput | UserWhereInput[],
+?   OR?: UserWhereInput[],
+?   NOT?: UserWhereInput | UserWhereInput[],
+?   name?: StringFilter | String,
+?   password?: StringFilter | String,
+?   role?: EnumRoleFilter | Role,
+?   contactNo?: StringFilter | String,
+?   address?: StringFilter | String,
+?   profileImg?: StringFilter | String,
+?   reviewAndRatings?: ReviewAndRatingListRelationFilter,
+?   orders?: OrderListRelationFilter
+  },
+  select: {
+    id: true,
+    name: true,
+    email: true,
+    role: true,
+    contactNo: true,
+    address: true,
+    profileImg: true
+  }
+}
+
+Argument `where` of type UserWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are listed in green.

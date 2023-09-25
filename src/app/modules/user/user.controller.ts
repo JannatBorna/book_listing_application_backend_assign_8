@@ -29,7 +29,7 @@ export const getUsers = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-export const getUser = catchAsync(async (req: Request, res: Response) => {
+export const getIdByUser = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
   const result = await getUserService(id);
 

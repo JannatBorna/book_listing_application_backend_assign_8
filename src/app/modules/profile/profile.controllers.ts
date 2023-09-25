@@ -13,7 +13,7 @@ const getProfile = catchAsync(async (req: Request, res: Response) => {
   sendResponse<Partial<User>>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'User retrieved successfully',
+    message: 'Profile retrieved successfully',
     data: result,
   });
 });
